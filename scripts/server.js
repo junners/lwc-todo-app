@@ -3,6 +3,8 @@ const compression = require('compression');
 const helmet = require('helmet');
 const express = require('express');
 const path = require('path');
+const serverSetup = require('./setup/create-table.js');
+require('dotenv').config();
 
 const app = express();
 app.use(helmet());
@@ -18,6 +20,19 @@ app.use('*', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
 
-app.listen(PORT, () =>
-    console.log(`✅  Server started: http://${HOST}:${PORT}`)
-);
+app.on('done', () => {
+    app.listen(PORT, () =>
+        console.log(`✅  Server started: http://${HOST}:${PORT}`)
+    );
+});
+
+serverSetup.createTable((err, data) => {
+    console.log('here');
+    if (err) {
+        console.log('Error from create table');
+        process.exit(1);
+    }
+    if (data) {
+        app.emit('done');
+    }
+});

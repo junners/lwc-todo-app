@@ -1,6 +1,6 @@
 # lwc-todo-app
 
-Here will be some information about the app.
+a simple todo app implemented with pg, node, express &amp; lwc
 
 ## How to start?
 

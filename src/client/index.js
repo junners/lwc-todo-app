@@ -1,6 +1,6 @@
-import { createElement } from 'lwc';
-import MyApp from 'my/app';
+import { createElement } from "lwc";
+import App from "todo/app";
 
-const app = createElement('my-app', { is: MyApp });
+const app = createElement("todo-app", { is: App });
 // eslint-disable-next-line @lwc/lwc/no-document-query
-document.querySelector('#main').appendChild(app);
+document.querySelector("#main").appendChild(app);

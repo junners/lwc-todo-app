@@ -1,0 +1,17 @@
+<template>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+    <template for:each={records} for:item="record">
+      <tr key={record.id}>
+        <!-- <todo-item key={record.id} record={record}></todo-item> -->
+        <td>{record.id}</td>
+        <td>{record.title}</td>
+        <td>{record.description}</td>
+      </tr>
+    </template>
+  </table>
+</template>

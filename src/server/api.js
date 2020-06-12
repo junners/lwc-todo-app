@@ -16,7 +16,12 @@ app.get("/api/v1/todos", (req, res) => {
     if (err) res.json({ err });
     res.json(
       r2.rows.map((row) => {
-        return { title: row.title, description: row.content, id: row.id };
+        return {
+          title: row.title,
+          description: row.content,
+          id: row.id,
+          sequence: row.sequence
+        };
       })
     );
   });
